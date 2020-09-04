@@ -6,19 +6,6 @@ import LembreteInput from './components/LembreteInput'
 
 const estilos = StyleSheet.create({
   telaPrincipalView: { padding: 50 },
-  lembreteTextInput: { borderBottomColor: 'black', borderBottomWidth: 1, textAlign: 'center', marginBottom: 4, padding: 12 },
-  itemNaListaView: {
-    padding: 12,
-    backgroundColor: '#DDD',
-    borderRadius: 7,
-    borderColor: 'black',
-    borderWidth: 1,
-    marginBottom: 7
-  },
-  
-  entradaView: {
-    marginBottom: 7
-  }
 });
 
 export default function App() {
@@ -41,10 +28,7 @@ export default function App() {
         {/* usuario insere os lembretes aqui */}
         <LembreteInput
         onAdicionarLembrete={addLembrete}
-        
         />
-      
-
         <FlatList
           data={lembretes}
           renderItem={(lembrete) => (
