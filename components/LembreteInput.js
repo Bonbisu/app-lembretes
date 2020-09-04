@@ -11,10 +11,6 @@ const LembreteInput = (props) => {
 
     const [lembrete, setLembrete] = useState('');
 
-    const adicionarLembrete = (lembrete) => {
-        props.adicionarLembrete(lembrete);
-    }
-
     const capturarLembrete = (lembrete) => {
         setLembrete(lembrete);
     }
@@ -28,7 +24,7 @@ const LembreteInput = (props) => {
             />
             <Button
                 title="Adicionar"
-                onPress={adicionarLembrete}
+                onPress={() => props.onAdicionarLembrete(lembrete)}
             />
         </View>
     )
@@ -36,13 +32,14 @@ const LembreteInput = (props) => {
 
 const estilos = StyleSheet.create({
     lembreteView: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
         marginBottom: 7
     },
     lembreteTextInput:{
         borderBottomColor: 'black',
         borderBottomWidth:1,
-        padding:8
+        marginBottom: 7,
+        padding:7
     }
 
 })

@@ -24,15 +24,10 @@ const estilos = StyleSheet.create({
 export default function App() {
 
   // se usarmos uma funçao ao invez de classe podemos usar state com as sequintes declarações
-  const [lembrete, setLembrete] = useState('');
   const [lembretes, setLembretes] = useState([]);
   const [contadorLembretes, setContadorLembretes] = useState(0);
 
-  const getLembrete = (lembrete) => {
-    setLembrete(lembrete);
-  }
-
-  const addLembrete = () => {
+  const addLembrete = (lembrete) => {
     setLembretes(() => {
       setContadorLembretes(contadorLembretes + 1)
       return [...lembretes, { value: lembrete, key: contadorLembretes.toString() }]
@@ -42,20 +37,14 @@ export default function App() {
 
   return (
     <View style={estilos.telaPrincipalView}>
-      <View style={estilos.entradaView}>
+
         {/* usuario insere os lembretes aqui */}
-        {/* <TextInput
-          placeholder="Lembrar..."
-          style={estilos.lembreteTextInput}
-          value={lembrete}
-          onChangeText={getLembrete}
+        <LembreteInput
+        onAdicionarLembrete={addLembrete}
+        
         />
-        <Button
-          title="Adicionar"
-          onPress={addLembrete}
-        /> */}
-      </View>
-      <View>
+      
+
         <FlatList
           data={lembretes}
           renderItem={(lembrete) => (
@@ -63,20 +52,6 @@ export default function App() {
             <LembreteItem lembrete={lembrete.item.value} />
           )}
         />
-
-           {/* renderiza automticamente toda a lista
-          ja o flatlist renderiza apenas o que está mostrado na tela, é mais sofisticado 
-         <ScrollView> 
-
-          {lembretes.map((l, i) => (
-            <View key={i} style={estilos.itemNaListaView}>
-              <Text >{l}</Text>
-            </View>
-          ))}
-        </ScrollView>  */}
-      
-
-      </View>
 
     </View>
   );
