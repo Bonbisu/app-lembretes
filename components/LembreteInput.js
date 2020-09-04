@@ -35,11 +35,11 @@ const estilos = StyleSheet.create({
         // flexDirection: 'row',
         marginBottom: 7
     },
-    lembreteTextInput:{
+    lembreteTextInput: {
         borderBottomColor: 'black',
-        borderBottomWidth:1,
+        borderBottomWidth: 1,
         marginBottom: 7,
-        padding:7
+        padding: 7
     }
 
 })

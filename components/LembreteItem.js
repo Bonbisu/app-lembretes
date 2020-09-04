@@ -2,15 +2,22 @@ import React from 'react';
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+
+    TouchableOpacity
 } from 'react-native'
 
 const LembreteItem = (props) => {
 
     return (
-        <View style={estilos.itemNaLista}>
-            <Text>{props.lembrete}</Text>
-        </View>
+        <TouchableOpacity
+            onPress={() => props.onApagarLembrete(props.indice)}
+        >
+
+            <View style={estilos.itemNaLista}>
+                <Text>{props.lembrete}</Text>
+            </View>
+        </TouchableOpacity>
     );
 };
 

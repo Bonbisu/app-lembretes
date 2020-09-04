@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 import LembreteItem from './components/LembreteItem'
 import LembreteInput from './components/LembreteInput'
 
@@ -14,28 +14,42 @@ export default function App() {
   const [lembretes, setLembretes] = useState([]);
   const [contadorLembretes, setContadorLembretes] = useState(0);
 
-  const addLembrete = (lembrete) => {
-    setLembretes(() => {
-      setContadorLembretes(contadorLembretes + 1)
-      return [...lembretes, { value: lembrete, key: contadorLembretes.toString() }]
+  const apagarLembrete = (indice) => {
+    console.log('💩 apagar', indice)
+    setLembretes(lembretes => {
+      return lembretes.filter(lembrete =>  lembrete.key !== indice)
     })
+
+  }
+
+  const adicionarLembrete = (lembrete) => {
+    if (lembrete !== '') {
+      setLembretes(() => {
+        setContadorLembretes(contadorLembretes + 1)
+        return [...lembretes, { value: lembrete, key: contadorLembretes.toString() }]
+      })
+    }
     // setLembrete('')
   }
 
   return (
     <View style={estilos.telaPrincipalView}>
 
-        {/* usuario insere os lembretes aqui */}
-        <LembreteInput
-        onAdicionarLembrete={addLembrete}
-        />
-        <FlatList
-          data={lembretes}
-          renderItem={(lembrete) => (
-            // FlatList sempre mapeia o item da lista colocada em data para um objeto {item: lembrete}
-            <LembreteItem lembrete={lembrete.item.value} />
-          )}
-        />
+      {/* usuario insere os lembretes aqui */}
+      <LembreteInput
+        onAdicionarLembrete={adicionarLembrete}
+      />
+      <FlatList
+        data={lembretes}
+        renderItem={(lembrete) => (
+          // FlatList sempre mapeia o item da lista colocada em data para um objeto {item: lembrete}
+          <LembreteItem
+            indice={lembrete.item.key}
+            lembrete={lembrete.item.value}
+            onApagarLembrete={apagarLembrete}
+          />
+        )}
+      />
 
     </View>
   );
