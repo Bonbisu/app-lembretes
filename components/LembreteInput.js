@@ -5,7 +5,7 @@ import {
     TextInput,
     Button,
     StyleSheet
-} from 'react-native'
+} from 'react-native';
 
 const LembreteInput = (props) => {
 
@@ -13,6 +13,10 @@ const LembreteInput = (props) => {
 
     const capturarLembrete = (lembrete) => {
         setLembrete(lembrete);
+    }
+    const adicionarLembrete = (lembrete) => {
+        props.onAdicionarLembrete(lembrete);
+        setLembrete('');    
     }
 
     return (
@@ -24,7 +28,7 @@ const LembreteInput = (props) => {
             />
             <Button
                 title="Adicionar"
-                onPress={() => props.onAdicionarLembrete(lembrete)}
+                onPress={() => adicionarLembrete(lembrete)}
             />
         </View>
     )
@@ -32,9 +36,9 @@ const LembreteInput = (props) => {
 
 const estilos = StyleSheet.create({
     lembreteView: {
-        // flexDirection: 'row',
         marginBottom: 7
     },
+    
     lembreteTextInput: {
         borderBottomColor: 'black',
         borderBottomWidth: 1,

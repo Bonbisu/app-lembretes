@@ -11,7 +11,7 @@ const LembreteItem = (props) => {
 
     return (
         <TouchableOpacity
-            onPress={() => props.onApagarLembrete(props.indice)}
+            onLongPress={() => props.onApagarLembrete(props.indice)}
         >
 
             <View style={estilos.itemNaLista}>

@@ -29,7 +29,6 @@ export default function App() {
         return [...lembretes, { value: lembrete, key: contadorLembretes.toString() }]
       })
     }
-    // setLembrete('')
   }
 
   return (
